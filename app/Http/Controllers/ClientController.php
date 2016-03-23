@@ -19,8 +19,10 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $clientList = Client::where('adminId', session()->get('adminId'))
+                                ->get();
         return view('client-view')
-            ->with('client_details', Client::all());
+            ->with('client_details', $clientList);
     }
 
     /**
@@ -55,11 +57,14 @@ class ClientController extends Controller
         $client->strPlateNo = $request->strPlateNo;
         // $admin->zipCode = $request->zipCode;
         $client->adminId = $request->session()->get('adminId');
-        dd($client->adminId);
         $client->boolStatus = 1;
 
         $strStatus = (new ClientBusiness())->createClient($client);
         
+        if ($strStatus === "success"){
+            return redirect('client');
+        }
+
     }
 
     /**
@@ -71,6 +76,7 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = (new ClientRepository())->selectClientById($id);
+        return response()->json($client);
     }
 
     public function showByName(Request $request){
@@ -117,13 +123,12 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = new Client;
+        $client = Client::find($id);
         $client->strFirstName = $request->strFirstName;
         $client->strMiddleName = $request->strMiddleName;
         $client->strLastName = $request->strLastName;
         // $admin->strPassword = Hash::make($request->strPassword);
         $client->strGender = $request->strGender;
-        $client->strEmail = $request->strEmail;
         $client->strContactNo = $request->strContactNo;
         $client->txtAddress = $request->txtAddress;
         // $admin->txtCurrentAddress = $request->txtCurrentAddress;
@@ -132,6 +137,7 @@ class ClientController extends Controller
         // $admin->zipCode = $request->zipCode;
 
         $strStatus = (new ClientRepository())->updateClient($client);
+        return response()->json($strStatus);
 
     }
 

@@ -13,7 +13,7 @@
 				return "success";
 
 			}catch(Exception $e){
-				dd($e);
+				dd('here '.$e);
 			}
 			return "failed-database";
 		}
@@ -23,7 +23,7 @@
 			try{
 
 				return Client::find($clientId)
-					->andWhere('boolStatus', true)
+					->where('boolStatus', true)
 					->first();
 
 			}catch(Exception $e){
