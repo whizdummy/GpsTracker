@@ -18,6 +18,7 @@ Route::get('/login', function () {
 Route::get('test', function() {
 	$string = "Last: Latitude = 00 00 00.00NWFDFDFD Longitude = 000 00 00.00E,Speed = 0Km/h,2016-03-13,16:10";
 	$pattern = "/Latitude = ([\d\s.]+)/";
+	$urlPattern = "/^(http|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/";
 	preg_match_all($pattern, $string, $matches);
 
 	die(var_dump(trim($matches[1][0])));
