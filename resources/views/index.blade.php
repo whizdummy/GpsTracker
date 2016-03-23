@@ -22,6 +22,8 @@
         <a href="#!" class="brand-logo"><img src="{!! asset('img/title.png') !!}" width="50%" height="30%" style="margin-top: 10px;"></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
+          <li><a href="{!! url('admin') !!}" class="green-text text-darken-4">Admin</a></li>
+          <li><a href="{!! url('client') !!}" class="green-text text-darken-4">Client</a></li>
           <li><a href="{!! url('monitor') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">find_in_page</i>Monitor</a></li>
           <li><a href="{!! url('statistics') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">assessment</i>Statistics</a></li>
           <li><a href="{!! url('product') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">shopping_cart</i>Product</a></li>
