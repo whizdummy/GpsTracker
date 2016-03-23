@@ -8,6 +8,7 @@
 	class Admin extends Model{
 
 		protected $table = 'tblAdmin';
+		protected $primaryKey = 'adminId';
 		protected $fillable = ['strUsername', 'strFirstName', 'strMiddleName', 
 			'strLastName', 'strPassword', 'strEmail', 'strContactNo', 'txtPermanentAddress',
 			'strCurrentAddress', 'zipCode', 'boolStatus'];

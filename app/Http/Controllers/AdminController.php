@@ -75,7 +75,7 @@ class AdminController extends Controller
                     ->where('boolStatus', 1)
                     ->first();
 
-        session()->flash('adminId', $admin->adminId);
+        session()->flash('adminUpdateId', $admin->adminId);
         return response()->json($admin);
     }
 
@@ -124,8 +124,9 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
 
-        $admin = new Admin();
-        // $admin->strUsername = $request->strUsername;
+        $admin = new Admin;
+
+        $admin->strUsername = $request->strUsername;
         $admin->strFirstName = $request->strFirstName;
         $admin->strMiddleName = $request->strMiddleName;
         $admin->strLastName = $request->strLastName;
@@ -138,6 +139,8 @@ class AdminController extends Controller
         $admin->dateBirthday = $request->dateBirthday;
         // $admin->zipCode = $request->zipCode;
         $strStatus = (new AdminRepository())->updateAdmin($admin);
+
+        // return redirect('admin');
 
     }
 
