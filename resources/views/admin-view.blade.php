@@ -30,8 +30,8 @@
 		                <td>{!! $admin_detail->created_at !!}</td>
 		                <td> 
 			                <a href="javascript:editId({{ $admin_detail->adminId }})"><i class="material-icons blue-text text-darken-3">mode_edit</i></a>
-			                <a href=""><i class="material-icons red-text">delete</i></a>
-			                 <a href=""><i class="material-icons green-text">payment</i></a>
+			                <a href="javascript:deleteId({{ $admin_detail->adminId }})"><i class="material-icons red-text">delete</i></a>
+			                <a href=""><i class="material-icons green-text">payment</i></a>
 		                </td>
 		            </tr>
 		            @endforeach
@@ -222,8 +222,23 @@
 	   	</div>
 	     </form>
 
-	     
-	 </div>
+
+	     <div id="deleteAdmin" class="modal modal-fixed-footer">
+		    <div class="modal-content">
+		      <h4>Deactivate Admin</h4>
+		      <form id="deleteAdminForm">
+		      	<input type="hidden" id="deleteAdminId">
+		      <p>Are you sure to deactivate this admin?</p>
+		    </div>
+		    <div class="modal-footer">
+			      <button class="btn waves-effect waves-light green darken-3 white-text" type="submit" name="action">YES
+		          </button>
+	    		</form>
+	          <a class=" modal-action modal-close waves-effect waves-green btn-flat green-text">NO</a>
+		    </div>
+		 </div>
+			     
+	</div>
 
 </article>
 </div>
@@ -234,6 +249,12 @@
 	}
 </style>
 <script type="text/javascript">
+
+	$(document).ready(function(){
+	    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal-trigger').leanModal();
+	});
+
 	function editId(id) {
 		var url =  "{!! route('admin.show', ':id') !!}";
 		var newValue = url.replace(':id', id);
@@ -321,6 +342,22 @@
 			}
 		});
 	});
+
+
+	function deleteId(id){
+
+		$('#deleteAdmin').openModal();
+		$('#deleteAdminId').val(id);
+		alert('here');
+
+	}
+
+	$('#deleteAdminForm').submit(function(event){
+		event.preventDefault();
+
+	});
+	
+
 </script>
 
 
