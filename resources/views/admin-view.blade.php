@@ -55,21 +55,24 @@
 	     <h4>Update Admin</h4>
 	     <form class="col s12 " action="{{ url('admin') }}" method="post" enctype="multipart/form-data">
 	       <div class="row">
+	       	<input type="hidden" name="_method" value="PUT">
+   			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+   			<input type="hidden" name="adminId" id="adminId">
 	       	 <div class="col s6">
 	       	 	    <h6 class="col s12">Name</h6>
 	       	 	    <div class="input-field col s4">
-	       	 	    <input id="firstName" type="text" class="validate" name="strFirstName" required>
-	       	 	    <label for="firstName">First Name</label>
+	       	 	    <input id="firstName_update" type="text" class="validate" name="strFirstName" required>
+	       	 	    <label for="firstName_update" id="lblFirstName">First Name</label>
 	       	 	    </div>
 
 	       	 	    <div class="input-field col s4">
-	       	 	    <input id="middleName" type="text" class="validate" name="strMiddleName">
-	       	 	    <label for="middleNmame">Middle Name</label>
+	       	 	    <input id="middleName_update" type="text" class="validate" name="strMiddleName">
+	       	 	    <label for="middleName_update" id="lblMiddleName">Middle Name</label>
 	       	 	    </div>
 
 	       	 	    <div class="input-field col s4">
-	       	 	    <input id="lastName" type="text" class="validate" name="strLastName" required>
-	       	 	    <label for="lastName">Last Name</label>
+	       	 	    <input id="lastName_update" type="text" class="validate" name="strLastName" required>
+	       	 	    <label for="lastName_update" id="lblLastName">Last Name</label>
 	       	 	    </div>
 
 	       	 	    <h6 class="col s6">Birthday</h6>
@@ -77,23 +80,23 @@
 
 	       	 	    <div class="col s6">
 
-	       	 	      <input type="date" name="dateBirthday" class="datepicker" id="bday">
+	       	 	      <input type="date" name="dateBirthday" class="datepicker" id="bday_update">
 
 	       	 	    </div>
 
 	       	 	    <div class="col s6">
 	       	 	      <p>
-	       	 	        <input name="strGender" type="radio" id="male" value="Male"/>
-	       	 	        <label for="male">Male</label>
+	       	 	        <input name="strGender" type="radio" id="male_update" value="Male"/>
+	       	 	        <label for="male_update">Male</label>
 	       	 	      
-	       	 	        <input name="strGender" type="radio" id="female" value="Female"/>
-	       	 	        <label for="female">Female</label>
+	       	 	        <input name="strGender" type="radio" id="female_update" value="Female"/>
+	       	 	        <label for="female_update">Female</label>
 	       	 	      </p>
 	       	 	    </div>
 
 	       	 	    <div class="input-field col s12">
-	       	 	  		<textarea id="textarea1" class="materialize-textarea" name="txtPermanentAddress"></textarea>
-	       	 	 	 	<label for="textarea1">Address</label>
+	       	 	  		<textarea id="address_update" class="materialize-textarea" name="txtPermanentAddress"></textarea>
+	       	 	 	 	<label for="address_update" id="lblAddress">Address</label>
 	       	 		</div>
 
 	       	 	   
@@ -104,31 +107,15 @@
 	         	<h6 class="col s12">Contact Information</h6>
 
 	         	<div class="input-field col s6">
-	         	<input id="email" type="email" class="validate" name="strEmail" required>
-	         	<label for="email">E-mail Address</label>
+	         	<input id="email_update" type="email" class="validate" name="strEmail" required>
+	         	<label for="email_update" id="lblEmail">E-mail Address</label>
 	         	</div>
 
 	         	<div class="input-field col s6">
-	         	<input id="contanctNo" type="text" class="validate" name="strContactNo" required>
-	         	<label for="contanctNo">Contact No.</label>
+	         	<input id="contactNo_update" type="text" class="validate" name="strContactNo" required>
+	         	<label for="contactNo_update" id="lblContactNo">Contact No.</label>
 	         	</div>
 
-	         	<h6 class="col s12">Account Information</h6>
-
-	         	<div class="input-field col s6">
-	         	<input id="username" type="text" class="validate" name="strContactNo" required>
-	         	<label for="username">Username</label>
-	         	</div>
-
-	         	<div class="input-field col s6">
-	         	<input id="password" type="password" class="validate" name="strContactNo" required>
-	         	<label for="password">Password</label>
-	         	</div>
-
-	         	<div class="input-field col s6 offset-s3">
-	         	<input id="confirmpassword" type="password" class="validate" name="strContactNo" required>
-	         	<label for="confirmpassword">Confirm Password</label>
-	         	
 	         </div>
 	         </div>
 	         <br><br>
@@ -256,6 +243,26 @@
 			type: "GET",
 			success: function(data) {
 				console.log(data);
+				$('#updateAdmin').openModal();
+				$('#adminId').val(data.adminId);
+				$('#lblFirstName').prop('class', 'active');
+				$('#firstName_update').val(data.strFirstName);
+				$('#lblMiddleName').prop('class', 'active');
+				$('#middleName_update').val(data.strMiddleName);
+				$('#lblLastName').prop('class', 'active');
+				$('#lastName_update').val(data.strLastName);
+				$('#lblEmail').prop('class', 'active');
+				$('#email_update').val(data.strEmail);
+				$('#lblContactNo').prop('class', 'active');
+				$('#contactNo_update').val(data.strContactNo);
+				$('#lblAddress').prop('class', 'active');
+				$('#address_update').val(data.txtPermanentAddress);
+				$('#bday_update').val(data.dateBirthday);
+				if (data.strGender === "Male"){
+					$("#male_update").prop("checked", true)
+				}else{
+					$("#female_update").prop("checked", true)
+				}
 			},
 			error: function(xhr) {
 				console.log(xhr);
