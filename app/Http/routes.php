@@ -30,6 +30,7 @@ Route::group(['middleware' => ['user']], function() {
 	Route::get('/', function () {
     	return view('monitor');
 	});
+	Route::resource('admin', 'AdminController');
 	Route::resource('client', 'ClientController');
 	Route::resource('monitor', 'MonitorController');
 	Route::resource('mileage-report', 'MileageReportController');
