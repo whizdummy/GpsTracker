@@ -74,6 +74,8 @@ class AdminController extends Controller
         $admin = Admin::where('adminId', $id)
                     ->where('boolStatus', 1)
                     ->first();
+
+        session()->flash('adminId', $admin->adminId);
         return response()->json($admin);
     }
 

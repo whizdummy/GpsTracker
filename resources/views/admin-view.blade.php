@@ -53,11 +53,10 @@
 	 <div id="updateAdmin" class="modal">
 	   <div class="modal-content">
 	     <h4>Update Admin</h4>
-	     <form class="col s12 " action="{{ url('admin') }}" method="post" enctype="multipart/form-data">
+	     <form class="col s12 " action="{{ url('admin/' . Session::get('adminId) }}" method="post" enctype="multipart/form-data">
 	       <div class="row">
 	       	<input type="hidden" name="_method" value="PUT">
-   			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-   			<input type="hidden" name="adminId" id="adminId">
+   			<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 	       	 <div class="col s6">
 	       	 	    <h6 class="col s12">Name</h6>
 	       	 	    <div class="input-field col s4">
@@ -244,7 +243,6 @@
 			success: function(data) {
 				console.log(data);
 				$('#updateAdmin').openModal();
-				$('#adminId').val(data.adminId);
 				$('#lblFirstName').prop('class', 'active');
 				$('#firstName_update').val(data.strFirstName);
 				$('#lblMiddleName').prop('class', 'active');
