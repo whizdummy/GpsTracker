@@ -220,8 +220,11 @@
 	         <a class=" modal-action modal-close waves-effect waves-green btn-flat green-text">CANCEL</a>
 	       </div>
 	   	</div>
-	     </form>
+	     </form> 
+	</div>
 
+</article>
+</div>
 
 	     <div id="deleteAdmin" class="modal modal-fixed-footer">
 		    <div class="modal-content">
@@ -236,12 +239,8 @@
 	    		</form>
 	          <a class=" modal-action modal-close waves-effect waves-green btn-flat green-text">NO</a>
 		    </div>
+		</form>
 		 </div>
-			     
-	</div>
-
-</article>
-</div>
 
 <style type="text/css">
 	#modal1{
@@ -252,7 +251,7 @@
 
 	$(document).ready(function(){
 	    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-		$('.modal-trigger').leanModal();
+		// $('.modal-trigger').leanModal();
 	});
 
 	function editId(id) {
@@ -289,10 +288,6 @@
 				console.log(xhr);
 			}
 		});
-	}
-
-	function deleteId(id) {
-
 	}
 
 	$(document).ready(function() {
@@ -347,8 +342,8 @@
 	function deleteId(id){
 
 		$('#deleteAdmin').openModal();
-		$('#deleteAdminId').val(id);
-		alert('here');
+		// $('#deleteAdminId').val(id);
+		// alert('here');
 
 	}
 
