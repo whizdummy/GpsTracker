@@ -24,6 +24,8 @@
 				// session()->put('strUsername', $admin->strUsername);
 				session()->put('adminId', $admin->adminId);
 				return redirect('/');
+			} else {
+				dd('Oops');
 			}
 		}
 

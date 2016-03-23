@@ -53,10 +53,11 @@
 	 <div id="updateAdmin" class="modal">
 	   <div class="modal-content">
 	     <h4>Update Admin</h4>
-	     <form class="col s12 " action="{!! route('admin.update', Session::get('adminUpdateId')) !!}" method="POST">
+	     <form class="col s12 " action="" method="POST" id="updateAdminForm">
 	       <div class="row">
-   			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	       	 {{ method_field('PUT') }}
+   			<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+	       	 {!! method_field('PUT') !!}
+	       	 <input hidden="hidden" name="adminId" id="adminId" />
 	       	 <div class="col s6">
 	       	 	    <h6 class="col s12">Name</h6>
 	       	 	    <div class="input-field col s4">
@@ -243,6 +244,7 @@
 			success: function(data) {
 				console.log(data);
 				$('#updateAdmin').openModal();
+				$('#adminId').val(data.adminId);
 				$('#lblFirstName').prop('class', 'active');
 				$('#firstName_update').val(data.strFirstName);
 				$('#lblMiddleName').prop('class', 'active');
@@ -283,6 +285,42 @@
 	        ]
 	    } );
 	} );
+
+	$('#updateAdminForm').submit(function(event) {
+		event.preventDefault();
+
+		var maleGender = document.getElementById('male_update');
+		var femaleGender = document.getElementById('female_update');
+		var genderValue = '';
+
+		if(maleGender.checked) {
+			genderValue = maleGender.value;
+		} else if(femaleGender.checked) {
+			genderValue = femaleGender.value;
+		}
+
+		$.ajax({
+			url: "admin/" + document.getElementById('adminId').value,
+			type: "POST",
+			data: {
+				_method: 'PUT',
+				firstName: document.getElementById('firstName_update').value,
+				middleName: document.getElementById('middleName_update').value,
+				lastName: document.getElementById('lastName_update').value,
+				birthday: document.getElementById('bday_update').value,
+				gender: genderValue,
+				address: document.getElementById('address_update').value,
+				email: document.getElementById('email_update').value,
+				contactNum: document.getElementById('contactNo_update').value
+			}, 
+			success: function(data) {
+				window.location.href = "{!! url('admin') !!}";
+			},
+			error: function(xhr) {
+				console.log(xhr);
+			}
+		});
+	});
 </script>
 
 

@@ -74,8 +74,6 @@ class AdminController extends Controller
         $admin = Admin::where('adminId', $id)
                     ->where('boolStatus', 1)
                     ->first();
-
-        session()->flash('adminUpdateId', $admin->adminId);
         return response()->json($admin);
     }
 
@@ -126,17 +124,16 @@ class AdminController extends Controller
 
         $admin = Admin::find($id);
 
-        $admin->strUsername = $request->strUsername;
-        $admin->strFirstName = $request->strFirstName;
-        $admin->strMiddleName = $request->strMiddleName;
-        $admin->strLastName = $request->strLastName;
+        $admin->strFirstName = $request->firstName;
+        $admin->strMiddleName = $request->middleName;
+        $admin->strLastName = $request->lastName;
         // $admin->strPassword = Hash::make($request->strPassword);
-        $admin->strGender = $request->strGender;
-        $admin->strEmail = $request->strEmail;
-        $admin->strContactNo = $request->strContactNo;
-        $admin->txtPermanentAddress = $request->txtPermanentAddress;
+        $admin->strGender = $request->gender;
+        $admin->strEmail = $request->email;
+        $admin->strContactNo = $request->contactNum;
+        $admin->txtPermanentAddress = $request->address;
         // $admin->txtCurrentAddress = $request->txtCurrentAddress;
-        $admin->dateBirthday = $request->dateBirthday;
+        $admin->dateBirthday = $request->birthday;
         // $admin->zipCode = $request->zipCode;
         $strStatus = (new AdminRepository())->updateAdmin($admin);
 
