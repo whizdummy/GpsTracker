@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
@@ -26,6 +26,9 @@ Route::get('test', function() {
 Route::post('login', 'LoginController@login');
 
 Route::group(['middleware' => ['user']], function() {
+	Route::get('/', function () {
+    	return view('monitor');
+	});
 	Route::resource('client', 'ClientController');
 	Route::resource('monitor', 'MonitorController');
 	Route::resource('mileage-report', 'MileageReportController');
@@ -48,7 +51,7 @@ Route::group(['middleware' => ['user']], function() {
 	Route::get('logout', function() {
 		Session::flush();
 
-		return Redirect::to('/');
+		return Redirect::to('/login');
 	});
 });
 	

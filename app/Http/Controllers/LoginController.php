@@ -23,7 +23,7 @@
 			if ($strStatus === "success"){
 				// session()->put('strUsername', $admin->strUsername);
 				session()->put('adminId', $admin->adminId);
-				return redirect('moving-overview');
+				return redirect('/');
 			}
 		}
 
