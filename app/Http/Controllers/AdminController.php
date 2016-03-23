@@ -124,7 +124,7 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
 
-        $admin = new Admin;
+        $admin = Admin::find($id);
 
         $admin->strUsername = $request->strUsername;
         $admin->strFirstName = $request->strFirstName;
@@ -140,8 +140,7 @@ class AdminController extends Controller
         // $admin->zipCode = $request->zipCode;
         $strStatus = (new AdminRepository())->updateAdmin($admin);
 
-        // return redirect('admin');
-
+        return redirect('admin');
     }
 
     /**

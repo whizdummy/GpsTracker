@@ -53,10 +53,10 @@
 	 <div id="updateAdmin" class="modal">
 	   <div class="modal-content">
 	     <h4>Update Admin</h4>
-	     <form class="col s12 " action="{!! url('admin/' . Session::get('adminUpdateId')) !!}" method="POST" enctype="multipart/form-data">
+	     <form class="col s12 " action="{!! route('admin.update', Session::get('adminUpdateId')) !!}" method="POST">
 	       <div class="row">
-	       	<input type="hidden" name="_method" value="PUT">
    			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	       	 {{ method_field('PUT') }}
 	       	 <div class="col s6">
 	       	 	    <h6 class="col s12">Name</h6>
 	       	 	    <div class="input-field col s4">
