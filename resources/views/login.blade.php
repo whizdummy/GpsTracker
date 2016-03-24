@@ -1,10 +1,5 @@
 @extends('index')
 @section('body')
-<style type="text/css">
-	body{
-		background-image: url({{URL::asset('img/graphics.png')}});
-	}
-</style>
 
 <div>
 <article class="main">

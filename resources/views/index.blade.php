@@ -8,7 +8,9 @@
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="{!! asset('css/materialize.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <link href="{!! asset('css/style2.min.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{!! asset('css/style.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
+
    <link href="{!! asset('css/mainStyle.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
    <link href="{!! asset('css/jquery.dataTables.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
    <link href="{!! asset('css/buttons.dataTables.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -27,6 +29,7 @@
           <li><a href="{!! url('monitor') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">find_in_page</i>Monitor</a></li>
           <li><a href="{!! url('statistics') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">assessment</i>Statistics</a></li>
           <li><a href="{!! url('product') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">shopping_cart</i>Product</a></li>
+          <li><a href="{!! url('product') !!}" class="white-text btn green darken-3">Log out</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li class="active"><a href="{{ URL::to('monitor') }}" class="green-text text-darken-5 waves-effect waves-light">Monitor</a></li>
@@ -42,40 +45,10 @@
 <body class="green darken-3">
   <div class="wrapper">
      @yield('body')
-  </div>
-  <div style="position: absoulute; bottom: 0px;">
-    <img src="{!! asset('img/bg.png') !!}" style="postion: fixed; bottom: 0px; margin-bottom: 0;">
-  </div>
-
-  
-  <script src="{!! asset('js/materialize.js') !!}"></script>
-  <script src="{!! asset('js/init.js') !!}"></script>
-
-  <script src="{!! asset('js/dataTables.buttons.js') !!}"></script>
-  <script src="{!! asset('js/buttons.html5.min.js') !!}"></script>
-
-  <script src="{!! asset('js/jszip.min.js') !!}"></script>
-  <script src="{!! asset('js/pdfmake.min.js') !!}"></script>
-  <script src="{!! asset('js/vfs_fonts.js') !!}"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
-      });
-          
-  </script>
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('select').material_select();
-    });
-           
-  </script>
-  
-</body>
-
-  <footer class="page-footer green">
+     
+ 
+  <footer class="page-footer green darken-3">
+  <img src="{!! asset('img/bg.png') !!}" width="100%" style="margin-left: 0; margin-right: 0;">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -110,4 +83,35 @@
       </div>
     </div>
   </footer>
+   </div>
+
+
+   
+   <script src="{!! asset('js/materialize.js') !!}"></script>
+   <script src="{!! asset('js/init.js') !!}"></script>
+
+   <script src="{!! asset('js/dataTables.buttons.js') !!}"></script>
+   <script src="{!! asset('js/buttons.html5.min.js') !!}"></script>
+
+   <script src="{!! asset('js/jszip.min.js') !!}"></script>
+   <script src="{!! asset('js/pdfmake.min.js') !!}"></script>
+   <script src="{!! asset('js/vfs_fonts.js') !!}"></script>
+
+   <script type="text/javascript">
+     $(document).ready(function(){
+         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+         $('.modal-trigger').leanModal();
+       });
+           
+   </script>
+
+   <script type="text/javascript">
+     $(document).ready(function() {
+       $('select').material_select();
+     });
+            
+   </script>
+</body>
+
+  
 </html>

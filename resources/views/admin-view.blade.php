@@ -175,9 +175,6 @@
 	       	 	  		<textarea id="textarea1" class="materialize-textarea" name="txtPermanentAddress"></textarea>
 	       	 	 	 	<label for="textarea1">Address</label>
 	       	 		</div>
-
-	       	 	   
-
 	       	 </div>
 	          
 	         <div class="col s6">
@@ -208,8 +205,7 @@
 	         	<div class="input-field col s6 offset-s3">
 	         	<input id="confirmpassword" type="password" class="validate" name="strContactNo" required>
 	         	<label for="confirmpassword">Confirm Password</label>
-	         	
-	         </div>
+	         	</div>
 	         </div>
 	         <br><br>
 	       </div>
@@ -220,27 +216,27 @@
 	         <a class=" modal-action modal-close waves-effect waves-green btn-flat green-text">CANCEL</a>
 	       </div>
 	   	</div>
-	     </form> 
+	   </form> 
+	</div>
+
+	<!-- Modal Structure -->
+	<div id="deleteAdmin" class="modal">
+	   <div class="modal-content">
+	     <h4>Delete Admin</h4>
+	     <form class="col s12 " action="{{ url('admin') }}" method="post" enctype="multipart/form-data">
+	      <input type="hidden" id="deleteAdminId">
+	      <h5>Delete this admin?</h5>
+	       <div class="modal-footer">
+	         <button class="btn waves-effect waves-light green darken-3 white-text" type="submit" name="action">CREATE
+	          </button>
+	         <a class=" modal-action modal-close waves-effect waves-green btn-flat green-text">CANCEL</a>
+	       </div>
+	   	</div>
+	   </form> 
 	</div>
 
 </article>
 </div>
-
-	     <div id="deleteAdmin" class="modal modal-fixed-footer">
-		    <div class="modal-content">
-		      <h4>Deactivate Admin</h4>
-		      <form id="deleteAdminForm">
-		      	<input type="hidden" id="deleteAdminId">
-		      <p>Are you sure to deactivate this admin?</p>
-		    </div>
-		    <div class="modal-footer">
-			      <button class="btn waves-effect waves-light green darken-3 white-text" type="submit" name="action">YES
-		          </button>
-	    		</form>
-	          <a class=" modal-action modal-close waves-effect waves-green btn-flat green-text">NO</a>
-		    </div>
-		</form>
-		 </div>
 
 <style type="text/css">
 	#modal1{
