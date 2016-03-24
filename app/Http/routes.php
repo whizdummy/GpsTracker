@@ -12,7 +12,7 @@
 */
 
 Route::get('/login', function () {
-    return view('admin-profile');
+    return view('login');
 });
 
 Route::get('test', function() {
