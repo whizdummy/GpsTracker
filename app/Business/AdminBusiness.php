@@ -54,7 +54,7 @@
 			if ($admin->strPassword == "" || $admin->strPassword == null || $admin->strPassword == " "){
 				return "failed-input";
 			}
-			$admin->strPassword = Hash::make($admin->strPassword);
+			// $admin->strPassword = Hash::make($admin->strPassword);
 			return (new AdminRepository())->loginAdmin($admin);
 
 		}

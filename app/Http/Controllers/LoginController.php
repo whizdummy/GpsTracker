@@ -2,6 +2,8 @@
 
 	namespace App\Http\Controllers;
 
+	use Hash;
+
 	use Illuminate\Http\Request;
 	use App\Http\Requests;
 
@@ -20,9 +22,9 @@
 			$strStatus = (new AdminBusiness())->loginAdmin($admin);
 			$admin = (new AdminRepository())->selectAdminByUsername($admin);
 
-			if ($strStatus === "success"){
+			if ($strStatus === "success" && Hash::check($request->strPassword, $admin->strPassword)){
 				// session()->put('strUsername', $admin->strUsername);
-				session()->flash('adminId', $admin->adminId);
+				session()->put('adminId', $admin->adminId);
 				return redirect('/');
 			} else {
 				session()->flash('login_error', 1);
