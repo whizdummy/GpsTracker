@@ -17,6 +17,7 @@
 
     <script src="{!! asset('js/jquery-1.12.0.min.js') !!}"></script>
     <script src="{!! asset('js/jquery.dataTables.js') !!}"></script>
+     <script src="{!! asset('js/materialize.js') !!}"></script>
     
   @if(Session::has('adminId'))
   <nav class=" white lighten-5">
@@ -29,7 +30,7 @@
           <li><a href="{!! url('monitor') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">find_in_page</i>Monitor</a></li>
           <li><a href="{!! url('statistics') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">assessment</i>Statistics</a></li>
           <li><a href="{!! url('product') !!}" class="green-text text-darken-4"><i class="material-icons left green-text text-darken-4">shopping_cart</i>Product</a></li>
-          <li><a href="{!! url('product') !!}" class="white-text btn green darken-3">Log out</a></li>
+          <li><a href="{!! url('logout') !!}" class="white-text btn green darken-3">Log out</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li class="active"><a href="{{ URL::to('monitor') }}" class="green-text text-darken-5 waves-effect waves-light">Monitor</a></li>
@@ -85,9 +86,6 @@
   </footer>
    </div>
 
-
-   
-   <script src="{!! asset('js/materialize.js') !!}"></script>
    <script src="{!! asset('js/init.js') !!}"></script>
 
    <script src="{!! asset('js/dataTables.buttons.js') !!}"></script>

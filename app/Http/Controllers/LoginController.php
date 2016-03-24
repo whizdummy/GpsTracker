@@ -22,10 +22,11 @@
 
 			if ($strStatus === "success"){
 				// session()->put('strUsername', $admin->strUsername);
-				session()->put('adminId', $admin->adminId);
+				session()->flash('adminId', $admin->adminId);
 				return redirect('/');
 			} else {
-				dd('Oops');
+				session()->flash('login_error', 1);
+				return redirect('/');
 			}
 		}
 

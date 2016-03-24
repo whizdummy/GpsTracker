@@ -11,6 +11,7 @@
 </div>
  	
  <div class="center green darken-1 z-depth-1" style="margin-right: 30%; margin-left: 30%; margin-top: 10%; border-radius: 10px;">
+ 		<input type="hidden" id="hidden_login_error" value="{!! Session::get('login_error') !!}" />
  		<h1 class="thin white-text text-darken-4 center">Log In</h1>
 	 	{!! Form::open(array('url' => 'login', 'method'	=> 'POST', 'class' => 'col s12')) !!}
 		 	{{ csrf_field() }}
@@ -26,12 +27,19 @@
 		        </div>
 		      </div>
 
-		      <button class="btn waves-effect waves-light col s12" type="submit" name="action">Submit
+		      <button class="btn waves-effect waves-light col s12" type="submit" name="action">Login
 		          <i class="material-icons right">send</i>
 		        </button>
 		     </div>
 	    {!! Form::close() !!}
  </div>
 
-
+{{-- Scripts START --}}
+<script type="text/javascript">
+	if(document.getElementById('hidden_login_error').value !== null) {
+		Materialize.toast('Invalid credentials. Please try again', 3000);
+		// alert('yey');
+	}
+</script>
+{{-- Scripts END --}}
 @endsection
