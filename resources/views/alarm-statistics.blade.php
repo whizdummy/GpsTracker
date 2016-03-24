@@ -26,7 +26,7 @@
 	        <thead>
 	            <tr>
 	                <th>Serial Number</th>
-	                <th>Target</th>
+	                <th>Date</th>
 	                <th>Vibration Alarm</th>
 	                <th>Electricity cutoff Alarm</th>
 	                <th>Low Battery Alarm</th>
